@@ -19,7 +19,11 @@ from soap.soap_utils import validate_amount_with_soap
 load_dotenv()
 
 # Initialize FastAPI application
-app = FastAPI()
+app = FastAPI(
+    title="Invoice Validation & Reconciliation API",
+    version="1.0.0",
+    description="API to upload invoice files (CSV/PDF), validate them using SOAP, store them in AWS S3, and reconcile against purchase orders."
+)
 
 # Enable CORS for local development / testing
 app.add_middleware(
@@ -62,8 +66,10 @@ def upload_invoice(
             raise HTTPException(status_code=400, detail=f"CSV extraction error: {e}")
 
     elif filename.endswith(".pdf"):
-        temp_path = os.path.join(UPLOAD_DIR, filename)
+        # Step 1: Save PDF temporarily
+        temp_path = os.path.join(UPLOAD_DIR, file.filename)
         with open(temp_path, "wb") as f:
+            file.file.seek(0)
             f.write(file.file.read())
 
         try:
@@ -71,7 +77,9 @@ def upload_invoice(
             text = ""
             for page in doc:
                 text += page.get_text()
+            doc.close()  # Close the file before rename
 
+            # Extract metadata from PDF
             invoice_number = re.search(r"Invoice Number[:\-]?\s*(\w+)", text)
             vendor = re.search(r"Vendor[:\-]?\s*(.+)", text)
             amount = re.search(r"Amount[:\-]?\s*([\d\.]+)", text)
@@ -85,7 +93,11 @@ def upload_invoice(
             amount = float(amount.group(1).strip())
             date_str = date_str.group(1).strip()
 
-            file_path = temp_path  # PDF already saved
+            # Rename file now that we have invoice_number
+            new_filename = f"{invoice_number}_{file.filename}"
+            file_path = os.path.join(UPLOAD_DIR, new_filename)
+            os.rename(temp_path, file_path)
+
         except Exception as e:
             raise HTTPException(status_code=400, detail=f"PDF extraction error: {e}")
 

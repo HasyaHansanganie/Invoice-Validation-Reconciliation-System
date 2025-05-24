@@ -22,4 +22,4 @@ class Invoice(Base):
     date = Column(Date)
     file_path = Column(String(255))
     s3_url = Column(String(255))
-    validation_status = Column(String(20))
+    validation_status = Column(String(50))
