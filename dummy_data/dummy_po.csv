@@ -1,0 +1,4 @@
+po_number,vendor,total_amount,date
+PO001,ABC Ltd,1000.00,2025-05-24
+PO002,XYZ Corp,1500.00,2025-05-20
+PO003,DEF Inc,2000.00,2025-05-22

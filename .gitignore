@@ -1,0 +1,13 @@
+uploads/
+.env
+.env.*
+*.pyc
+*.pyo
+*.pyd
+*.log
+*.db
+.venv/
+venv/
+.idea/
+.DS_Store
+*.swp
