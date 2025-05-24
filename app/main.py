@@ -114,7 +114,7 @@ def upload_invoice(
 
     print(f"Saved file: {file_path}")
 
-    # Step 3: Upload to AWS S3 or simulate
+    # Step 3: Upload to AWS S3
     s3_url = upload_file_to_s3(file_path, new_filename)
     print(f"S3 Upload URL: {s3_url}")
 
