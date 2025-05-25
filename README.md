@@ -2,6 +2,11 @@
 
 A mini full-stack application to upload, validate, and reconcile invoice data against purchase orders using FastAPI, MySQL, AWS S3 (simulated/real), and PHP frontend.
 
+## 📽️ Project Demo
+
+<a href="https://drive.google.com/file/d/1uFRPBoTRfqjXYCgSavwE-iux6mhinB-R/view?usp=sharing" target="_blank">
+  <img src="demo_preview.png" alt="Click here to watch the demo" width="600">
+</a>
 
 ## 🚀 Features
 
