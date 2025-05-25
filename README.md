@@ -61,14 +61,14 @@ invoice-system/
 
 ## ⚙️ Setup & Run Instructions
 
-### 1. 📦 Clone the Repository
+### 1. Clone the Repository
 
 ```bash
 git clone https://github.com/HasyaHansanganie/Invoice-Validation-Reconciliation-System.git
 cd invoice-system
 ```
 
-### 2. 🐍 Create Virtual Environment
+### 2. Create Virtual Environment
 
 ```bash
 python -m venv venv
@@ -77,13 +77,13 @@ venv\Scripts\activate  # On Windows
 source venv/bin/activate  # On macOS/Linux
 ```
 
-### 3. 📥 Install Python dependencies
+### 3. Install Python dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 4. 🗃️ Database Setup (MySQL)
+### 4. Database Setup (MySQL)
 Start your MySQL server (locally or with a tool like XAMPP)
 
 Create the database manually:
@@ -92,7 +92,7 @@ Create the database manually:
 CREATE DATABASE invoice_system;
 ```
 
-### 5. 🔐 Set Up Environment Variables
+### 5. Set Up Environment Variables
 
 Update your .env with MySQL and AWS credentials.
 
@@ -108,7 +108,7 @@ AWS_BUCKET_NAME=your_bucket
 AWS_REGION=us-east-1
 ```
 
-### 6. 🧪 Load Sample Purchase Orders
+### 6. Load Sample Purchase Orders
 
 ```bash
 python -m app.load_dummy_pos
@@ -116,7 +116,7 @@ python -m app.load_dummy_pos
 
 This loads sample POs from dummy_data/dummy_po.csv.
 
-### 7. 🚀 Run the Backend Server
+### 7. Run the Backend Server
 
 ```bash
 uvicorn app.main:app --reload
@@ -127,7 +127,7 @@ Open Swagger Docs at:
 http://localhost:8000/docs
 ```
 
-### 8. 📤 Test Upload Endpoint
+### 8. Test Upload Endpoint
 
 Use /upload-invoice in Swagger UI.
 
@@ -135,7 +135,7 @@ Upload invoice files and execute. (CSV or PDF)
 
 ✅ Will extracts metadata, validates via SOAP, upload to local folder + S3, stores in DB
 
-### 9. 🔍 Reconciliation Endpoint
+### 9. Reconciliation Endpoint
 
 Use /reconcile in Swagger to return match status for each invoice.
 
@@ -155,7 +155,7 @@ Example response:
 }
 ```
 
-### 10. 🌐 Run the PHP Frontend
+### 10. Run the PHP Frontend
 
 Prerequisites:
 PHP installed and added to PATH
@@ -171,5 +171,5 @@ Then open in browser:
 http://localhost:8080/reconcile.php
 ```
 
-### 📝 Notes
+### Notes
 Make sure your FastAPI app is running for frontend to work
