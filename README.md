@@ -2,7 +2,6 @@
 
 A mini full-stack application to upload, validate, and reconcile invoice data against purchase orders using FastAPI, MySQL, AWS S3 (simulated/real), and PHP frontend.
 
----
 
 ## 🚀 Features
 
@@ -15,7 +14,6 @@ A mini full-stack application to upload, validate, and reconcile invoice data ag
 - Expose reconciliation results via REST API
 - Basic PHP frontend that consumes reconciliation API
 
----
 
 ## 🧰 Tech Stack
 
@@ -27,10 +25,11 @@ A mini full-stack application to upload, validate, and reconcile invoice data ag
 - **Frontend**: PHP + cURL (optional)
 - **Extras**: `.env` configuration, file upload, CORS, logging
 
----
+
 
 ## 📦 Project Structure
 
+```text
 invoice-system/
 ├── app/
 │ ├── main.py                         # FastAPI app and routes
@@ -54,7 +53,6 @@ invoice-system/
 └── README.md
 
 
----
 
 ## ⚙️ Setup & Run Instructions
 
@@ -63,6 +61,7 @@ invoice-system/
 ```bash
 git clone https://github.com/HasyaHansanganie/Invoice-Validation-Reconciliation-System.git
 cd invoice-system
+```
 
 ### 2. 🐍 Create Virtual Environment
 
@@ -71,22 +70,28 @@ python -m venv venv
 venv\Scripts\activate  # On Windows
 # OR
 source venv/bin/activate  # On macOS/Linux
+```
 
-3. 📥 Install Python dependencies
+### 3. 📥 Install Python dependencies
 
+```bash
 pip install -r requirements.txt
+```
 
-4. 🗃️ Database Setup (MySQL)
+### 4. 🗃️ Database Setup (MySQL)
 Start your MySQL server (locally or with a tool like XAMPP)
 
 Create the database manually:
 
+```bash
 CREATE DATABASE invoice_system;
+```
 
-5. 🔐 Set Up Environment Variables
+### 5. 🔐 Set Up Environment Variables
 
 Update your .env with MySQL and AWS credentials.
 
+```bash
 MYSQL_USER=your_mysql_user
 MYSQL_PASSWORD=your_mysql_password
 MYSQL_DB=invoice_system
@@ -96,34 +101,40 @@ AWS_ACCESS_KEY_ID=your_aws_key
 AWS_SECRET_ACCESS_KEY=your_aws_secret
 AWS_BUCKET_NAME=your_bucket
 AWS_REGION=us-east-1
+```
 
-6. 🧪 Load Sample Purchase Orders
+### 6. 🧪 Load Sample Purchase Orders
 
+```bash
 python -m app.load_dummy_pos
+```
 
 This loads sample POs from dummy_data/dummy_po.csv.
 
-7. 🚀 Run the Backend Server
+### 7. 🚀 Run the Backend Server
 
+```bash
 uvicorn app.main:app --reload
+```
 
 Open Swagger Docs at:
+```bash
 http://localhost:8000/docs
+```
 
-8. 📤 Test Upload Endpoint
+### 8. 📤 Test Upload Endpoint
 
 Use /upload-invoice in Swagger UI.
-
 Upload invoice files and execute. (CSV or PDF)
-
 ✅ Will extracts metadata, validates via SOAP, upload to local folder + S3, stores in DB
 
-9. 🔍 Reconciliation Endpoint
+### 9. 🔍 Reconciliation Endpoint
 
 Use /reconcile in Swagger to return match status for each invoice.
 
 Example response:
 
+```bash
 [
   {
     "invoice_number": "INV001",
@@ -133,19 +144,23 @@ Example response:
     "po_number": "PO001"
   }
 ]
+```
 
-10. 🌐 Run the PHP Frontend
+### 10. 🌐 Run the PHP Frontend
 
 Prerequisites:
 PHP installed and added to PATH
 
 Run frontend:
-
+```bash
 cd invoice-frontend
 php -S localhost:8080
+```
 
 Then open in browser:
+```bash
 http://localhost:8080/reconcile.php
+```
 
-📝 Notes
+### 📝 Notes
 Make sure your FastAPI app is running for frontend to work
