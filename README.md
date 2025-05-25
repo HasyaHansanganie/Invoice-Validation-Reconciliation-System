@@ -64,8 +64,9 @@ invoice-system/
 git clone https://github.com/HasyaHansanganie/Invoice-Validation-Reconciliation-System.git
 cd invoice-system
 
-2. 🐍 Create Virtual Environment
+### 2. 🐍 Create Virtual Environment
 
+```bash
 python -m venv venv
 venv\Scripts\activate  # On Windows
 # OR
