@@ -137,15 +137,17 @@ Use /reconcile in Swagger to return match status for each invoice.
 Example response:
 
 ```bash
-[
-  {
-    "invoice_number": "INV001",
-    "vendor": "ABC Ltd",
-    "amount": 1000.00,
-    "status": "Matched",
-    "po_number": "PO001"
-  }
-]
+{
+  "reconciliation": [
+    {
+      "invoice_number": "INV001",
+      "vendor": "ABC Ltd",
+      "amount": 1000,
+      "status": "Matched",
+      "po_number": "PO001"
+    }
+  ]
+}
 ```
 
 ### 10. 🌐 Run the PHP Frontend
