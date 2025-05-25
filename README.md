@@ -51,7 +51,7 @@ invoice-system/
 ├── .env                              # Environment variables
 ├── requirements.txt                  # Python dependencies
 └── README.md
-
+```
 
 
 ## ⚙️ Setup & Run Instructions
@@ -125,7 +125,9 @@ http://localhost:8000/docs
 ### 8. 📤 Test Upload Endpoint
 
 Use /upload-invoice in Swagger UI.
+
 Upload invoice files and execute. (CSV or PDF)
+
 ✅ Will extracts metadata, validates via SOAP, upload to local folder + S3, stores in DB
 
 ### 9. 🔍 Reconciliation Endpoint
